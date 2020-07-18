@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class GameplayManager : MonoBehaviour
 {
-
+    public CarController carController = null;
     public PlayerManager playerManager = null;
     public CountdownController countdownController = null;
     private TimeDisplay timeDisplay = null;
     public CheckpointManager checkpointManager = null;
 
-    // Start is called before the first frame update
     void Start()
     {
+        carController = GameObject.FindObjectOfType<CarController>();
         playerManager = GameObject.FindObjectOfType<PlayerManager>();
         countdownController = GameObject.FindObjectOfType<CountdownController>();
         timeDisplay = GameObject.FindObjectOfType<TimeDisplay>();
@@ -22,13 +22,7 @@ public class GameplayManager : MonoBehaviour
 
     public bool AttemptAction()
     {
-        bool prevent = false;
-        if (countdownController.isIdle)
-        {
-            prevent = true;
-        }
-
-        return prevent;
+        return countdownController.isIdle;
     }
 
     public void InitiateGame()

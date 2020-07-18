@@ -4,38 +4,34 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public PlayerMovement playerMovement = null;
+    //public Spawnpoint spawnpoint = null;
     public GameplayManager gameplayManager = null;
-    
-    public MouseLook mouseLook = null;
-    public Transform spawnpoint;
+    public CarController carController = null;
     public GameObject player;
+    public Transform spawn;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
+        carController = GameObject.FindObjectOfType<CarController>();
+        //spawnpoint = GameObject.FindObjectOfType<Spawnpoint>();
         gameplayManager = GameObject.FindObjectOfType<GameplayManager>();
-        mouseLook = GameObject.FindObjectOfType<MouseLook>();
     }
 
     public void FreezePlayer()
     {
-        playerMovement.disableMovement = true;
-        mouseLook.disableMouselook = true;
+        carController.disableMovement = true;
     }
 
     public void UnfreezePlayer()
     {
-        playerMovement.disableMovement = false;
-        mouseLook.disableMouselook = false;
+        carController.disableMovement = false;
     }
 
     public void TeleportPlayer()
     {
-        Debug.Log("Teleport player: " + player.transform.position + " to spawnpoint: " + spawnpoint.transform.position);
-        player.transform.position = spawnpoint.transform.position;
-        mouseLook.ResetCameraPosition();
+        player.transform.position = spawn.position;
+        carController.ResetMovements();
     }
 
     // Update is called once per frame
