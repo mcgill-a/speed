@@ -740,7 +740,7 @@ GameObject:
   - component: {fileID: 390173402}
   - component: {fileID: 390173401}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: SpeedometerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -762,7 +762,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -290}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &390173401
@@ -981,12 +981,22 @@ PrefabInstance:
     - target: {fileID: 1002559634103028084, guid: b69158e7d1471894f9bdb0806b9163b2,
         type: 3}
       propertyPath: speed
-      value: 4
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 1002559634103028084, guid: b69158e7d1471894f9bdb0806b9163b2,
         type: 3}
       propertyPath: turnSpeed
-      value: 1.5
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002559634103028084, guid: b69158e7d1471894f9bdb0806b9163b2,
+        type: 3}
+      propertyPath: speedometer
+      value: 
+      objectReference: {fileID: 390173401}
+    - target: {fileID: 1002559634103028085, guid: b69158e7d1471894f9bdb0806b9163b2,
+        type: 3}
+      propertyPath: m_Mass
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2314350989525556573, guid: b69158e7d1471894f9bdb0806b9163b2,
         type: 3}

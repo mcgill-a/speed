@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class CarController : MonoBehaviour
 {
     public Rigidbody carModel = null;
@@ -10,6 +10,11 @@ public class CarController : MonoBehaviour
     public float turnSpeed;
     public float gravityMultiplier;
     public bool disableMovement = false;
+
+    public TextMeshProUGUI speedometer;
+
+
+
 
     void Start()
     {
@@ -21,6 +26,8 @@ public class CarController : MonoBehaviour
         carModel.velocity = new Vector3(0f, 0f, 0f);
     }
     
+    
+    
     void FixedUpdate()
     {
         if (!disableMovement)
@@ -28,6 +35,7 @@ public class CarController : MonoBehaviour
             Move();
             Turn();
             Fall();
+            UpdateSpeedometer();
         }
     }
 
@@ -50,5 +58,20 @@ public class CarController : MonoBehaviour
     void Fall()
     {
         carModel.AddForce(Vector3.down * gravityMultiplier * 10);
+    }
+
+    void UpdateSpeedometer()
+    {
+        Vector3 horizontalVelocity = carModel.velocity;
+        horizontalVelocity = new Vector3(carModel.velocity.x, 0, carModel.velocity.z);
+
+        // The speed on the x-z plane ignoring any speed
+        float horizontalSpeed = horizontalVelocity.magnitude;
+        // The speed from gravity or jumping
+        float verticalSpeed = carModel.velocity.y;
+        // The overall speed
+        float overallSpeed = carModel.velocity.magnitude;
+        int overallSpeedInt = (int)Mathf.Round(overallSpeed);
+        speedometer.text = "Speed: " + overallSpeedInt.ToString();
     }
 }
